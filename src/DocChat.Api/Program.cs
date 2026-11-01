@@ -33,6 +33,10 @@ builder.Services.AddSingleton<Answerer>();
 
 var app = builder.Build();
 
+// The built React page (wwwroot): index.html at "/", its scripts and styles as static files.
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapPost("/ask", async (AskRequest request, Answerer answerer, CancellationToken ct) =>
 {
     var question = request.Question?.Trim();
@@ -41,5 +45,7 @@ app.MapPost("/ask", async (AskRequest request, Answerer answerer, CancellationTo
 
     return Results.Ok(await answerer.AskAsync(question, ct: ct));
 });
+
+app.MapFallbackToFile("index.html");
 
 app.Run();

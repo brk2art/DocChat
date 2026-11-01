@@ -1,0 +1,27 @@
+:root {
+  --bg: #f7f7f5;
+  --panel: #ffffff;
+  --text: #1f2328;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --accent: #2f6fdb;
+  --error: #b42318;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --text: #e6e8eb;
+    --muted: #9aa4af;
+    --border: #2c323c;
+    --accent: #6ea0ff;
+    --error: #ff7b72;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
