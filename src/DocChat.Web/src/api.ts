@@ -19,6 +19,8 @@ export async function ask(question: string): Promise<AskResponse> {
   if (!response.ok) {
     // The API answers 400 with { error: "..." } for an empty or too long question.
     const body = await response.json().catch(() => null)
+    if (response.status === 429)
+      throw new Error('The demo has reached its hourly question limit. Please try again later.')
     throw new Error(body?.error ?? `The server answered ${response.status}.`)
   }
 
