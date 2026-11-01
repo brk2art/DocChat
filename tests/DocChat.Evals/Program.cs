@@ -7,6 +7,9 @@ using DocChat.Core;
 using DocChat.Evals;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
+using OpenAI.Chat;
+
+#pragma warning disable OPENAI001 // reasoning effort is marked experimental in the OpenAI SDK
 
 // dotnet run --project tests/DocChat.Evals -- --label baseline [--repeat 3] [--mode Hybrid|Keyword|Vector] [--case damage-1,norway-1]
 string? Arg(string name)
@@ -30,7 +33,16 @@ var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
 var azure = new AzureOpenAIClient(
     new Uri(config["AzureOpenAI:Endpoint"]!),
     new AzureKeyCredential(config["AzureOpenAI:Key"]!));
-var chat = azure.GetChatClient(config["AzureOpenAI:ChatDeployment"]!).AsIChatClient();
+// --reasoning low|medium|high: how much the model may think before answering. Off = the deployment's default.
+var reasoning = Arg("--reasoning");
+IChatClient chat = azure.GetChatClient(config["AzureOpenAI:ChatDeployment"]!).AsIChatClient();
+if (reasoning is not null)
+{
+    var level = new ChatReasoningEffortLevel(reasoning.ToLowerInvariant());
+    chat = chat.AsBuilder()
+        .ConfigureOptions(o => o.RawRepresentationFactory = _ => new ChatCompletionOptions { ReasoningEffortLevel = level })
+        .Build();
+}
 var embedder = azure.GetEmbeddingClient(config["AzureOpenAI:EmbeddingDeployment"]!).AsIEmbeddingGenerator();
 var search = new SearchClient(
     new Uri(config["AzureSearch:Endpoint"]!),
