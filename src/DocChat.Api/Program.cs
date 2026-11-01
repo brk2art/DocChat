@@ -2,6 +2,7 @@ using Azure;
 using Azure.AI.OpenAI;
 using Azure.Search.Documents;
 using DocChat.Api;
+using DocChat.Core;
 using Microsoft.Extensions.AI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,7 +33,7 @@ app.MapPost("/ask", async (AskRequest request, Answerer answerer, CancellationTo
     if (string.IsNullOrEmpty(question) || question.Length > 500)
         return Results.BadRequest(new { error = "Ask a question of 1 to 500 characters." });
 
-    return Results.Ok(await answerer.AskAsync(question, ct));
+    return Results.Ok(await answerer.AskAsync(question, ct: ct));
 });
 
 app.Run();

@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.AI;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.AI;
 
-namespace DocChat.Api;
+namespace DocChat.Core;
 
 // Retrieval-augmented generation: find the sources, then let the model answer from them and only from them.
 public sealed partial class Answerer(Retriever retriever, IChatClient chat)
@@ -22,11 +22,11 @@ public sealed partial class Answerer(Retriever retriever, IChatClient chat)
         - Answer in 2 to 4 sentences, in the language of the question.
         """;
 
-    public async Task<AskResponse> AskAsync(string question, CancellationToken ct)
+    public async Task<AskResponse> AskAsync(string question, SearchMode mode = SearchMode.Hybrid, CancellationToken ct = default)
     {
         var stopwatch = Stopwatch.StartNew();
 
-        var passages = await retriever.SearchAsync(question, Top, ct);
+        var passages = await retriever.SearchAsync(question, Top, mode, ct);
         if (passages.Count == 0)
             return new AskResponse("I can't find that in our policies. Please contact customer service.",
                 [], null, null, stopwatch.ElapsedMilliseconds);

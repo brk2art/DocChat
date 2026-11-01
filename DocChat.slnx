@@ -1,7 +1,11 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/DocChat.Api/DocChat.Api.csproj" />
+    <Project Path="src/DocChat.Core/DocChat.Core.csproj" />
     <Project Path="src/DocChat.Indexer/DocChat.Indexer.csproj" />
     <Project Path="src/DocChat.Sandbox/DocChat.Sandbox.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DocChat.Evals/DocChat.Evals.csproj" />
   </Folder>
 </Solution>

@@ -12,9 +12,11 @@
 
 Devices with a lithium battery built in, such as phones and laptops, can be shipped if the battery is under 100 Wh and the device is switched off.
 
-## Items with extra rules for Zone D
+## Alcohol, food and perfume
 
-Food, alcohol and perfume can be sent to Zone C without extra paperwork. To Zone D they need a customs declaration, and alcohol is not shipped to Norway at all, although Norway is in Zone B.
+Alcohol is never shipped to Norway. Norway is in Zone B for delivery times, but it is outside the EU.
+
+For every other destination: food, alcohol and perfume can be sent to Zones A, B and C without extra paperwork, and to Zone D with a customs declaration.
 
 ## Weight and size
 

@@ -8,7 +8,7 @@ Customers can return an item within 30 days of delivery. The item must be unused
 
 ## Return shipping
 
-Return shipping is free for customers in Zone A (Denmark) and Zone B (Sweden, Finland, Norway): a prepaid return label can be printed from the customer portal. Customers in Zone C and Zone D pay for return shipping themselves, or can buy a Brightway return label for a flat €6.50.
+Return shipping is free for customers in Zone A (Denmark) and Zone B (Sweden, Finland, Norway): a prepaid return label can be printed from the customer portal. Customers in Zone C (all other EU countries) and Zone D (United Kingdom, Switzerland and other non-EU countries in Europe) pay for return shipping themselves, or can buy a Brightway return label for a flat €6.50.
 
 ## Items that cannot be returned
 
