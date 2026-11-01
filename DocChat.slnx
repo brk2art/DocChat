@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/DocChat.Api/DocChat.Api.csproj" />
     <Project Path="src/DocChat.Indexer/DocChat.Indexer.csproj" />
     <Project Path="src/DocChat.Sandbox/DocChat.Sandbox.csproj" />
   </Folder>

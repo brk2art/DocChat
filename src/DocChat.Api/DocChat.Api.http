@@ -1,0 +1,31 @@
+@api = http://localhost:5023
+
+### 1. Words that aren't in the documents
+POST {{api}}/ask
+Content-Type: application/json
+
+{ "question": "My parcel arrived broken. What should I do?" }
+
+### 2. Needs two documents: Norway is Zone B, but alcohol isn't shipped there
+POST {{api}}/ask
+Content-Type: application/json
+
+{ "question": "Can I send a bottle of wine to my friend in Oslo?" }
+
+### 3. Trap: returns have 30 days, damage claims 14
+POST {{api}}/ask
+Content-Type: application/json
+
+{ "question": "How long do I have to send back a jacket I don't like?" }
+
+### 4. Not in the documents: it must say so
+POST {{api}}/ask
+Content-Type: application/json
+
+{ "question": "Do you deliver to Japan?" }
+
+### 5. Another language
+POST {{api}}/ask
+Content-Type: application/json
+
+{ "question": "Hasarlı paket için kaç gün içinde başvurmalıyım?" }
